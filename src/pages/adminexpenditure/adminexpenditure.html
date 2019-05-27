@@ -1,0 +1,104 @@
+<ion-header>
+
+    <ion-navbar>
+        <ion-title>Expenditure</ion-title>
+    </ion-navbar>
+    <ion-navbar class="marginTopLine">        
+        <ion-segment color="whiteColor" [(ngModel)]="tabs">
+            <ion-segment-button (click)="selectTab(0)"
+                value="0" >Add
+            </ion-segment-button>
+            <ion-segment-button (click)="selectTab(1)"
+                value="1">View     
+            </ion-segment-button>  
+            <div id="slide" class="slide"></div>   
+        </ion-segment>
+    </ion-navbar>
+
+</ion-header>
+
+<ion-slides #pageSlider id="pageSlider"  (ionSlideWillChange)="changeWillSlide($event)" class="fullBody">
+
+    <ion-slide> 
+        <br/>
+        <form [formGroup]="addvendor">
+            <ion-list >
+                <ion-item class="bgTrnasp">   
+                    <ion-datetime displayFormat="MM/DD/YYYY"  formControlName="this.data.date" [(ngModel)]="this.data.date" ></ion-datetime>
+                </ion-item>
+                <ion-item class="bgTrnasp">
+                    <ion-input type="text" placeholder="Expenditure For" formControlName="this.data.expFor" [(ngModel)]="this.data.expFor"></ion-input>
+                </ion-item>
+                <ion-item class="bgTrnasp">
+                    <ion-input type="text" placeholder="Paid To" formControlName="this.data.paidTo" [(ngModel)]="this.data.paidTo"></ion-input>
+                </ion-item>
+                <ion-item class="bgTrnasp">  
+                    <ion-input type="number" placeholder="Amount" formControlName="this.data.amount" [(ngModel)]="this.data.amount"></ion-input>
+                </ion-item>
+                <ion-item class="bgTrnasp" >        
+                <ion-label>Payment Mode</ion-label>
+                <ion-select formControlName="this.data.payMode" [(ngModel)]="this.data.payMode">      
+                    <ion-option>Cash</ion-option>   
+                    <ion-option>Online Payment</ion-option>
+                    <ion-option>Cheque</ion-option>
+                </ion-select>  
+            </ion-item> 
+                <ion-item class="bgTrnasp">
+                    <ion-textarea  placeholder="Note" rows="1" formControlName="this.data.note" [(ngModel)]="this.data.note"></ion-textarea>   
+                </ion-item>
+                <ion-item class="bgTrnasp" no-lines>
+                    <button ion-button  full [disabled]="!addvendor.valid" *ngIf="!updateStatus" (click)="saveData();">Save</button>
+                    <button ion-button full color='appcolor'  [disabled]="!addvendor.valid" *ngIf="updateStatus" padding round (click)="updateData();" >Update</button>
+                </ion-item>
+            </ion-list>
+        </form>
+    </ion-slide>
+    <ion-slide> 
+
+        <ion-grid>  
+            <ion-row *ngFor="let item of getAllDataExpen; let i=index">     
+                <ion-col col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12>
+                    <div class="panel" >
+                        <div class="panel-heading">
+                            <span class="pull-left">{{item.date}}</span>
+                            <span class="pull-right">{{item.time}}</span><br/>
+                        </div>
+                        <div class="panel-body">
+                            <ion-grid>
+                                <ion-row>         
+                                    <ion-col col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 >
+                                        <span class="itemLeft">Expenditure For: {{item.expFor}}</span>
+                                    </ion-col>
+                                    <ion-col col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 *ngIf="item.paidTo!=''">
+                                             <span class="itemLeft">Paid To: {{item.paidTo}}</span>
+                                    </ion-col>
+                                    <ion-col col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12>
+                                        <span class="itemLeft">Amount: {{item.amount}}</span>
+                                    </ion-col>
+                                    <ion-col col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 *ngIf="item.payMode!=''">
+                                             <span class="itemLeft">Pay Mode: {{item.payMode}}</span>
+                                    </ion-col>
+                                   <ion-col col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12>
+                                        <span class="itemLeft" *ngIf="item.note!=''">Note: {{item.note}}</span>
+                                    </ion-col>
+                                    <ion-col col-8 col-sm-8 col-md-8 col-lg-8 col-xl-8></ion-col>
+                                    <ion-col col-4 col-sm-4 col-md-4 col-lg-4 col-xl-4 >
+                                        <button ion-button color="primary"  outline (click)="editParaPass(item.id,item.date,item.expFor,item.paidTo,item.amount,item.payMode,item.note);">    
+                                                <ion-icon name="create"></ion-icon>
+                                        </button>  
+                                        <button ion-button color="danger" outline (click)="deleteData(item.id)">
+                                                <ion-icon name="trash" ></ion-icon>
+                                        </button>
+                                    </ion-col>
+
+                                </ion-row>
+                            </ion-grid>
+                        </div> 
+                    </div>   
+                </ion-col>
+            </ion-row>
+        </ion-grid>
+    </ion-slide>
+
+</ion-slides>
+

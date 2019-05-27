@@ -1,0 +1,41 @@
+<ion-header>
+
+    <ion-navbar>
+        <ion-title>Table Booking</ion-title>
+    </ion-navbar>
+
+</ion-header>
+
+
+<ion-content class="fullBody">
+    <br/>
+    <form [formGroup]="tableBooking">
+        <ion-list >
+            <ion-item class="bgTrnasp">   
+                <ion-datetime displayFormat="MM/DD/YYYY"  formControlName="data.date" [(ngModel)]="data.date" ></ion-datetime>
+            </ion-item>
+            <ion-item class="bgTrnasp">
+                <ion-label>Select Menu *</ion-label>   
+                <ion-select formControlName="data.menu"   [(ngModel)]="data.menu" (ionChange)="getSubMenuList();">      
+                <ion-option *ngFor="let item of menuList" value="{{item.menu}}" checked="false">{{item.menu}}</ion-option>
+                </ion-select>   
+            </ion-item>
+            <ion-item class="bgTrnasp">
+                <ion-label>Select Submenu *</ion-label>   
+                <ion-select formControlName="data.submenu"   [(ngModel)]="data.submenu" (ionChange)="getDrinkProItems();">      
+                    <ion-option *ngFor="let item of submenuList" value="{{item.submenu}}" checked="false">{{item.submenu}}</ion-option>
+                </ion-select>
+            </ion-item>
+
+            <ion-item class="bgTrnasp">
+                <ion-input type="number" placeholder="Qty *" formControlName="data.qty" [(ngModel)]="data.qty"></ion-input>
+            </ion-item>
+             <ion-item class="bgTrnasp" *ngIf="qtyManagentStatus">   
+                <ion-input type="text" placeholder="Item" formControlName="data.items" [(ngModel)]="data.items" readonly="true" ></ion-input>
+            </ion-item>
+            <ion-item class="bgTrnasp" no-lines>
+                <button ion-button  full [disabled]="!tableBooking.valid"  (click)="saveData();">Save</button>
+            </ion-item>
+        </ion-list>
+    </form>
+</ion-content>

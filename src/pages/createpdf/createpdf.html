@@ -1,0 +1,27 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Report</ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content padding>
+ <ion-item>
+    <ion-label stacked>From</ion-label>
+      <ion-datetime displayFormat="MM/DD/YYYY" [(ngModel)]="letterObj.from"></ion-datetime>
+    
+  </ion-item>
+  <ion-item>
+    <ion-label stacked>To</ion-label>
+      <ion-datetime displayFormat="MM/DD/YYYY" [(ngModel)]="letterObj.to"></ion-datetime>
+    
+  </ion-item>
+  <ion-item>
+    <ion-label stacked>Text</ion-label>
+    <ion-textarea [(ngModel)]="letterObj.text" rows="4"></ion-textarea>
+  </ion-item>
+ 
+    <button ion-button full (click)="createPdf()">Create PDF</button>
+  <button ion-button full (click)="downloadPdf()" color="secondary" [disabled]="!pdfObj">
+<ion-icon name="print"></ion-icon>
+</button>
+    
+ </ion-content>

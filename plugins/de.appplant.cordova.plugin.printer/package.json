@@ -1,0 +1,68 @@
+{
+  "_from": "de.appplant.cordova.plugin.printer",
+  "_id": "de.appplant.cordova.plugin.printer@0.7.3",
+  "_inBundle": false,
+  "_integrity": "sha1-o5PECRbscGpm8k/KoI/cPqEO1y8=",
+  "_location": "/de.appplant.cordova.plugin.printer",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "tag",
+    "registry": true,
+    "raw": "de.appplant.cordova.plugin.printer",
+    "name": "de.appplant.cordova.plugin.printer",
+    "escapedName": "de.appplant.cordova.plugin.printer",
+    "rawSpec": "",
+    "saveSpec": null,
+    "fetchSpec": "latest"
+  },
+  "_requiredBy": [
+    "#USER",
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/de.appplant.cordova.plugin.printer/-/de.appplant.cordova.plugin.printer-0.7.3.tgz",
+  "_shasum": "a393c40916ec706a66f24fcaa08fdc3ea10ed72f",
+  "_spec": "de.appplant.cordova.plugin.printer",
+  "_where": "F:\\Project\\Ionic\\Hotel",
+  "author": {
+    "name": "Sebastián Katzer"
+  },
+  "bugs": {
+    "url": "https://github.com/katzer/cordova-plugin-printer/issues"
+  },
+  "bundleDependencies": false,
+  "cordova": {
+    "id": "de.appplant.cordova.plugin.printer",
+    "platforms": [
+      "ios",
+      "android"
+    ]
+  },
+  "deprecated": false,
+  "description": "Cordova plugin to print HTML documents using AirPrint and Android Printing Framework.",
+  "engines": [
+    {
+      "name": "cordova",
+      "version": ">=3.0.0"
+    }
+  ],
+  "homepage": "https://github.com/citylims/cordova-plugin-printer",
+  "keywords": [
+    "appplant",
+    "print",
+    "printer",
+    "ios",
+    "android",
+    "google cloud",
+    "air print",
+    "ecosystem:cordova",
+    "cordova-ios",
+    "cordova-android"
+  ],
+  "license": "Apache 2.0",
+  "name": "de.appplant.cordova.plugin.printer",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/citylims/cordova-plugin-printer.git"
+  },
+  "version": "0.7.3"
+}

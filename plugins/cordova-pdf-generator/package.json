@@ -1,0 +1,61 @@
+{
+  "_from": "cordova-pdf-generator",
+  "_id": "cordova-pdf-generator@1.9.3",
+  "_inBundle": false,
+  "_integrity": "sha1-JZd/hBiPgOB+D4WR4hgR4x7eyHQ=",
+  "_location": "/cordova-pdf-generator",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "tag",
+    "registry": true,
+    "raw": "cordova-pdf-generator",
+    "name": "cordova-pdf-generator",
+    "escapedName": "cordova-pdf-generator",
+    "rawSpec": "",
+    "saveSpec": null,
+    "fetchSpec": "latest"
+  },
+  "_requiredBy": [
+    "#USER",
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/cordova-pdf-generator/-/cordova-pdf-generator-1.9.3.tgz",
+  "_shasum": "25977f84188f80e07e0f8591e21811e31edec874",
+  "_spec": "cordova-pdf-generator",
+  "_where": "F:\\Project\\Ionic\\Hotel",
+  "author": {
+    "name": "cesar"
+  },
+  "bugs": {
+    "url": "https://github.com/cesarvr/pdf-generator/issues"
+  },
+  "bundleDependencies": false,
+  "cordova": {
+    "id": "cordova-pdf-generator",
+    "platforms": [
+      "ios",
+      "android"
+    ]
+  },
+  "deprecated": false,
+  "description": "is a HTML to PDF (offline) Generator.",
+  "engines": [
+    {
+      "name": "cordova",
+      "version": ">=3.4.0"
+    }
+  ],
+  "homepage": "https://github.com/cesarvr/pdf-generator#readme",
+  "keywords": [
+    "ecosystem:cordova",
+    "cordova-ios",
+    "cordova-android"
+  ],
+  "license": "MIT",
+  "name": "cordova-pdf-generator",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cesarvr/pdf-generator.git"
+  },
+  "version": "1.9.3"
+}

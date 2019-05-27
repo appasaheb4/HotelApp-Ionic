@@ -1,0 +1,42 @@
+page-adminbilling {
+
+    .fullBody{
+    background-image: url("http://menuapphybrid.newapptec.com/Content/Project/Hotel/All/background.png");
+}  
+    .userName{
+        font-size: 18px;
+    }
+    .date{
+        font-size: 13px;
+        color: gray;
+    }
+    .userImage{
+        font-size: 50px;
+        
+    }
+    
+    .itemLeft{
+        float: left;
+          }
+
+.rigBtn{
+   margin-left: 20%;    
+}
+.paid{
+        color: green;
+        font-weight: bold;
+    }
+      
+
+  .panel{
+        width: 95%;
+       display: block;
+       
+    margin-left: auto;
+     margin-right: auto;
+    }
+    .panel-heading{
+        background-color: #FFC107;
+    }
+
+}

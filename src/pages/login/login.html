@@ -1,0 +1,33 @@
+<ion-content padding class="loginPage">   
+    <div class="loginDiv">
+         <br/>  
+         <img src="assets/imgs/hotelLoginIcon.jpg" alt="" class="img-responsive img-circle loginIcon loginIcon"/>
+         <br/>  
+          <form [formGroup]="loginForm">
+        <ion-list>  
+            <ion-item class="contentListItem" no-lines >        
+                <ion-label color="whiteColor">Select Type</ion-label>
+                <ion-select formControlName="adminType" [(ngModel)]="adminType">      
+                    <ion-option>Admin</ion-option>   
+                    <ion-option>Waiter</ion-option>
+                    <ion-option>Kitchen</ion-option>
+                </ion-select>  
+            </ion-item>          
+            <ion-item class="contentListItem">    
+                <ion-input type="number" placeholder="Mobile Number" color="whiteColor" formControlName="mobileNo" [(ngModel)]="mobileNo"></ion-input>
+            </ion-item>  
+            <ion-item class="contentListItem">
+                <ion-input type="password" placeholder="Password" color="whiteColor" formControlName="password" [(ngModel)]="password" ></ion-input>
+            </ion-item>
+            <ion-item no-lines class="contentListItem">    
+                <button ion-button color="appcolor" full (click)="login();" [disabled]="!loginForm.valid">Login</button>      
+            </ion-item>
+            <ion-item no-lines class="contentListItem">
+                <button ion-button  color="appcolor" clear full>Forgot Password</button>
+            </ion-item>
+        </ion-list>
+               </form>
+    </div>
+         
+    
+</ion-content>

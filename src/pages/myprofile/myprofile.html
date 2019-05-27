@@ -1,0 +1,47 @@
+<ion-header>
+    <ion-navbar>   
+        <ion-title>My Profile</ion-title>
+    </ion-navbar>  
+</ion-header> 
+<ion-content class="fullBody">   
+    <ion-grid>
+        <ion-row>     
+            <ion-col col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 >
+                <div text-center>
+                     <img  [hidden]="profileIcon !== null" src="{{base64Image}}"  class="proPhoto img-thumbnail img-circle"  />
+                     <img src="{{pathForImage(profileIcon)}}" class="proPhoto img-thumbnail img-circle" [hidden]="profileIcon === null">
+                                    <br/>
+<!--                    <button ion-button  clear color="appcolor" (click)="presentActionSheet()">Change Profile Photo</button>-->
+                </div>
+            </ion-col>      
+        </ion-row>
+    </ion-grid>  
+     <form [formGroup]="myprofileForm">     
+    <ion-list>
+        <ion-item no-lines class="bgTrnasp">
+            <button ion-button item-right outline color="appcolor" (click)="editAction();">
+                <ion-icon name="create"></ion-icon>  Edit
+            </button>     
+        </ion-item>
+        <ion-item class="bgTrnasp">
+            <ion-input  type="text" placeholder="Name *"  [disabled]="!disName" formControlName="this.data.fullname" [(ngModel)]="this.data.fullname"></ion-input>
+        </ion-item>
+        <ion-item class="bgTrnasp">
+            <ion-input type="number" placeholder="Mobile No *" [disabled]="!disName" formControlName="this.data.mobileNo" [(ngModel)]="this.data.mobileNo"></ion-input>
+        </ion-item>
+        <ion-item class="bgTrnasp">
+            <ion-input type="email" placeholder="Email *" [disabled]="!disName" formControlName="this.data.email" [(ngModel)]="this.data.email"></ion-input>
+        </ion-item>
+        <ion-item class="bgTrnasp">  
+            <ion-input type="text" placeholder="Adhar No" [disabled]="!disName" formControlName="this.data.adharNo" [(ngModel)]="this.data.adharNo"></ion-input>
+        </ion-item>
+        <ion-item class="bgTrnasp">
+            <ion-input type="text" placeholder="Note" [disabled]="!disName" formControlName="this.data.note"  [(ngModel)]="this.data.note"></ion-input>   
+        </ion-item>   
+        <ion-item no-lines class="bgTrnasp"><button ion-button color="appcolor" full round [disabled]="!myprofileForm.valid" *ngIf="updateStatus" (click)="updateData();" >Update</button></ion-item>
+        <ion-item class="bgTrnasp"><button ion-button item-right outline color="appcolor" (click)="openChangePassword();">
+            <ion-icon name="lock"></ion-icon>  Change Password
+            </button></ion-item>
+    </ion-list>
+     </form>
+</ion-content>

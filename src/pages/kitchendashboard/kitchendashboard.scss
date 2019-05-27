@@ -1,0 +1,52 @@
+page-kitchendashboard {
+
+    .fullBody{
+    background-image: url("http://menuapphybrid.newapptec.com/Content/Project/Hotel/All/background.png");
+}
+.bgTrnasp{
+    background-color: transparent;
+}
+    
+   .userName{
+        font-size: 18px;
+    }
+    .date{
+        font-size: 13px;
+        color: gray;
+    }
+    .userImage{
+        font-size: 50px;
+        
+    }
+    
+    .itemLeft{
+        float: left;
+          }
+
+.rigBtn{
+   margin-left: 20%;    
+}
+.paid{
+        color: green;
+        font-weight: bold;
+        float: right;
+    }
+    .unpaid{
+        color: red;
+        font-weight: bold;
+        float: right;
+    }
+      
+
+  .panel{
+        width: 95%;
+       display: block;
+       
+    margin-left: auto;
+     margin-right: auto;
+    }
+    .panel-heading{
+        background-color: #FFC107;
+    }
+
+}

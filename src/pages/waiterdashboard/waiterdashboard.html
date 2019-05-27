@@ -1,0 +1,108 @@
+<ion-header>
+    <ion-navbar color="appcolor">
+        <button ion-button menuToggle>
+            <ion-icon name="menu"></ion-icon>
+        </button>
+        <ion-title>Home</ion-title>
+    </ion-navbar>    
+    <ion-navbar class="marginTopLine">        
+        <ion-segment color="whiteColor" [(ngModel)]="tabs">
+            <ion-segment-button (click)="selectTab(0)"
+                value="0" >Table Booking
+            </ion-segment-button>
+            <ion-segment-button (click)="selectTab(1)"
+                value="1">Booking List    
+            </ion-segment-button>  
+            <div id="slide" class="slide"></div>   
+        </ion-segment>  
+    </ion-navbar>
+</ion-header>       
+
+<ion-slides #pageSlider id="pageSlider"  (ionSlideWillChange)="changeWillSlide($event)" class="fullBody">
+    <ion-slide >   
+
+        <ion-grid>
+            <ion-row>     
+                <ion-col col-4 col-sm-4 col-md-4 col-lg-4 col-xl-4 (click)="openPage(freeTable);">  
+                         <button ion-button icon-only block  clear >
+                        <img src="http://hotelsameer.web44.net/Content/AppImages/WaiterHome/freeTable.png" alt="billing"/>
+                    </button> 
+                    <h6 class="text-center titleName">Free Table</h6>
+                </ion-col>
+                <ion-col col-4 col-sm-4 col-md-4 col-lg-4 col-xl-4 (click)="openPage(bookingTable);">
+                         <button ion-button icon-only block  clear>
+                        <img src="http://hotelsameer.web44.net/Content/AppImages/WaiterHome/bookingTable.png" alt="purchase"/>
+                    </button> 
+                    <h6 class="text-center titleName">Booking Table</h6>  
+                </ion-col>
+            </ion-row>
+        </ion-grid>
+
+    </ion-slide>
+    <ion-slide> 
+        <ion-grid>  
+            <ion-row *ngFor="let item of bookingData; let i=index">     
+                <ion-col col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12>
+                    <div class="panel" >
+                        <div class="panel-heading">
+                            <span class="pull-left">{{item.date}}</span>
+                            <span class="pull-right">{{item.time}}</span><br/>
+                        </div>
+                        <div class="panel-body">
+                            <ion-grid>
+                                <ion-row>       
+                                    <ion-col col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6 *ngIf="item.tableNo!=''">
+                                             <span class="itemLeft">Table No: {{item.tableNo}}</span>
+                                    </ion-col>
+                                    <ion-col col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6 *ngIf="item.tableCode!=''">
+                                             <span class="itemLeft">Table Code: {{item.tableCode}}</span>
+                                    </ion-col>
+                                    <table class="table table-bordered table-responsive">
+                                        <thead>
+                                            <tr>
+                                                <th scope="col">Menu </th>
+                                                <th scope="col">Submenu</th>
+                                                <th scope="col">Qty</th>
+                                                <th scope="col" *ngIf="item.status!='Paid'">Delete</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr *ngFor="let itemIn of bookingData[i].extraMenuList; let i=index">
+                                                <td>{{itemIn.ExmenuName}}</td>
+                                                <td>{{itemIn.ExsubMenuName}}</td>
+                                                <td>{{itemIn.ExQty}}</td>
+                                                <td (click)="removeMenuItem(itemIn.id)" *ngIf="item.status!='Paid'"><ion-icon name="trash" color="danger"></ion-icon></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>    
+                                    <ion-item col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 no-lines>
+                                        <button ion-button color="danger" clear *ngIf="item.status!='Paid'" (click)="addExtraMenu(item.id,item.tableNo,item.tableCode,item.maxValue)" item-start >
+                                                <img src="http://menuapphybrid.newapptec.com/Content/Project/Hotel/TableBooking/ExtraMenuAdd.png" alt="add" />  Add Menu
+                                        </button>
+                                         <button ion-button color="appcolor" clear *ngIf="item.placeStatus=='No'" (click)="placeOrder(item.id)" item-start>
+                                               <img src="http://menuapphybrid.newapptec.com/Content/Project/Hotel/TableBooking/placeOrder.png" alt="placeorder" />  Place Order
+                                        </button>   
+                                        <button ion-button color="danger" clear *ngIf="item.kitchenStatus=='No' && item.placeStatus=='Yes'" (click)="kitchenRemove(item.id)" item-start>
+                                               <img src="http://menuapphybrid.newapptec.com/Content/Project/Hotel/TableBooking/removeKitchen.png" alt="placeorder" />  Remove Kitchen Order
+                                        </button>   
+                                    </ion-item>
+                                    <div class="btnRight">           
+                                        <span class="paid" *ngIf="item.status=='Paid'">Paid</span><span class="unpaid" *ngIf="item.status=='UnPaid'">UnPaid</span>
+                                        <button ion-button color="danger" outline *ngIf="item.status!='UnPaid'" (click)="deleteData(item.id,item.tableNo)" >
+                                                <ion-icon name="trash"  ></ion-icon>
+                                        </button>   
+                                    </div>
+
+                                </ion-row>
+                            </ion-grid>
+                        </div> 
+                    </div>   
+                </ion-col>
+            </ion-row>
+        </ion-grid>
+
+    </ion-slide>
+
+</ion-slides>
+
+

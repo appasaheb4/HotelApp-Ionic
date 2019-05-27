@@ -1,0 +1,185 @@
+<ion-header>
+    <ion-navbar>
+        <ion-title>Purchase</ion-title>
+    </ion-navbar>
+    <ion-navbar class="marginTopLine">        
+        <ion-segment color="whiteColor" [(ngModel)]="tabs">
+            <ion-segment-button (click)="selectTab(0)"
+                value="0" >Add Purchase
+            </ion-segment-button>
+            <ion-segment-button (click)="selectTab(1)"
+                value="1">View Purchase    
+            </ion-segment-button>  
+            <div id="slide" class="slide"></div>   
+        </ion-segment>
+    </ion-navbar>   
+</ion-header>       
+
+
+
+<ion-slides #pageSlider id="pageSlider"  (ionSlideWillChange)="changeWillSlide($event)" class="fullBody">
+    
+    
+        
+    <ion-slide> 
+        <form [formGroup]="purchForm">
+            <ion-grid padding>  
+                <ion-row>     
+                    <ion-col col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6>
+                        <ion-item class="bgTrnasp">
+                            <ion-datetime displayFormat="MM/DD/YYYY" placeholder="01/01/2018" formControlName="data.date" [(ngModel)]="data.date" ></ion-datetime>
+                        </ion-item>
+                    </ion-col>
+                    <ion-col col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6>
+                        <ion-item class="bgTrnasp">
+                            <ion-label>Vendor Name *</ion-label>   
+                            <ion-select formControlName="data.vendorName"   [(ngModel)]="data.vendorName" (ionChange)="vendroDatils();">      
+                                <ion-option *ngFor="let item of addVendorData" value="{{item.vendorName}}" checked="false">{{item.vendorName}}</ion-option>
+                            </ion-select>
+                        </ion-item>
+                    </ion-col>    
+                    <ion-col col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6>
+                        <ion-item class="bgTrnasp">
+                            <ion-input type="text" placeholder="Contact No " formControlName="data.contactNo" [(ngModel)]="data.contactNo" disabled="true"></ion-input>
+                        </ion-item>
+                    </ion-col>
+                    <ion-col col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6>
+                        <ion-item class="bgTrnasp">
+                            <ion-input type="text" placeholder="Pancard No" formControlName="data.panNo" [(ngModel)]="data.panNo" disabled="true"></ion-input>
+                        </ion-item>
+                    </ion-col>
+                    <ion-col col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6>
+                        <ion-item class="bgTrnasp">
+                            <ion-input type="text" placeholder="Adharcard No" formControlName="data.adharNo" [(ngModel)]="data.adharNo" disabled="true"></ion-input>
+                        </ion-item>
+                    </ion-col>
+                    <ion-col col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6>
+                        <ion-item class="bgTrnasp">
+                            <ion-input type="text" placeholder="GST No " formControlName="data.gstNo" [(ngModel)]="data.gstNo" disabled="true"></ion-input>
+                        </ion-item>
+                    </ion-col>
+                    <ion-col col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6>
+                        <ion-item class="bgTrnasp">
+                            <ion-input type="text" placeholder="Prodcut Name *" formControlName="data.proName" [(ngModel)]="data.proName"></ion-input>
+                        </ion-item>
+                    </ion-col>
+                    <ion-col col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6>
+                        <ion-item class="bgTrnasp">
+                            <ion-input type="number" placeholder="Qty *" formControlName="data.qty" [(ngModel)]="data.qty" (ionChange)="cal();"></ion-input>
+                        </ion-item>
+                    </ion-col>
+                    <ion-col col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6>
+                        <ion-item class="bgTrnasp">
+                            <ion-input type="number" placeholder="Rate *" formControlName="data.rate" [(ngModel)]="data.rate" (ionChange)="cal();"></ion-input>
+                        </ion-item>
+                    </ion-col> 
+                    <ion-col col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6>
+                        <ion-item class="bgTrnasp">
+                            <ion-input type="number" placeholder="Price *" formControlName="data.price" [(ngModel)]="data.price"></ion-input>
+                        </ion-item>
+                    </ion-col> 
+
+                    <ion-col col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6>
+                        <ion-item class="bgTrnasp">
+                            <ion-input type="number" placeholder="GST %" formControlName="data.gstper" [(ngModel)]="data.gstper" (ionChange)="cal();"></ion-input>
+                        </ion-item>
+                    </ion-col> 
+                    <ion-col col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6>
+                        <ion-item class="bgTrnasp">
+                            <ion-input type="number" placeholder="GST Amount" formControlName="data.gstamount" [(ngModel)]="data.gstamount" disabled="true"></ion-input>
+                        </ion-item>
+                    </ion-col> 
+                    <ion-col col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12>
+                        <ion-item class="bgTrnasp">
+                            <ion-input type="number" placeholder="Total Amount" formControlName="data.total" [(ngModel)]="data.total" disabled="true"></ion-input>
+                        </ion-item>
+                    </ion-col> 
+                    <ion-col col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12>
+                        <ion-item class="bgTrnasp">
+                            <ion-textarea  placeholder="Note" rows="2" formControlName="data.note" [(ngModel)]="data.note"></ion-textarea>   
+                        </ion-item>
+                    </ion-col>
+
+
+                    <ion-col col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12>
+                        <button ion-button  full [disabled]="!purchForm.valid" *ngIf="!updateStatus" (click)="saveData();">Save</button>
+                        <button ion-button full color='appcolor'  [disabled]="!purchForm.valid" *ngIf="updateStatus" padding round (click)="updateData();" >Update</button>
+                    </ion-col>
+                </ion-row>
+            </ion-grid>
+        </form>
+    </ion-slide>
+
+    <ion-slide>    
+        
+        <ion-grid>     
+            <ion-row *ngFor="let item of purAllData; let i=index">     
+                <ion-col col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12>
+                    <div class="panel" >
+                        <div class="panel-heading">
+                            <span class="pull-left">{{item.date}}</span>
+                            <span class="pull-right">{{item.time}}</span><br/>
+                        </div>
+                        <div class="panel-body">
+                            <ion-grid>
+                                <ion-row>     
+                                    <ion-col col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 >
+                                        <span class="itemLeft">Vendor Name: {{item.vendorName}}</span>
+                                    </ion-col>
+                                    <ion-col col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6>
+                                        <span class="itemLeft">Contact No: {{item.contactNo}}</span>
+                                    </ion-col>
+                                    <ion-col col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6 *ngIf="item.panNo!=''">
+                                             <span class="itemLeft">Pancard No: {{item.panNo}}</span>
+                                    </ion-col>
+                                    <ion-col col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6 *ngIf="item.adharNo!=''">
+                                             <span class="itemLeft">Adhar No: {{item.adharNo}}</span>
+                                    </ion-col>
+                                    <ion-col col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6>
+                                        <span class="itemLeft">GST No: {{item.gstNo}}</span>
+                                    </ion-col>
+                                    <ion-col col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12>
+                                        <span class="itemLeft">Prodcut Name: {{item.proName}}</span>
+                                    </ion-col>
+                                    <ion-col col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6>
+                                        <span class="itemLeft">Qty: {{item.qty}}</span>
+                                    </ion-col>
+                                    <ion-col col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6>
+                                        <span class="itemLeft">Rate: {{item.rate}}</span>
+                                    </ion-col>
+                                    <ion-col col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6>
+                                        <span class="itemLeft">Price: {{item.price}}</span>
+                                    </ion-col>
+                                    <ion-col col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6>
+                                        <span class="itemLeft">GST %: {{item.gstPer}}</span>
+                                    </ion-col>
+                                    <ion-col col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6>
+                                        <span class="itemLeft">GST Amount: {{item.gstAmount}}</span>
+                                    </ion-col>
+                                    <ion-col col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6>
+                                        <span class="itemLeft">Total Amount: {{item.totalAmount}}</span>
+                                    </ion-col>
+                                    <ion-col col-8 col-sm-8 col-md-8 col-lg-8 col-xl-8>
+                                        <span class="itemLeft" *ngIf="item.note!=''">Note: {{item.note}}</span>
+                                    </ion-col>
+                                    <ion-col col-4 col-sm-4 col-md-4 col-lg-4 col-xl-4>
+                                        <button ion-button color="primary"  outline (click)="editParaPass(item.id,item.date,item.vendorName,item.contactNo,item.panNo,item.adharNo,item.gstNo,item.proName,item.qty,item.rate,item.price,item.gstPer,item.gstAmount,item.totalAmount,item.note);">    
+                                                <ion-icon name="create"></ion-icon>   
+                                        </button>  
+                                        <button ion-button color="danger" outline (click)="deleteData(item.id)">
+                                                <ion-icon name="trash" ></ion-icon>
+                                        </button>
+                                    </ion-col>
+
+                                </ion-row>
+                            </ion-grid>
+                        </div> 
+                    </div>   
+                </ion-col>
+            </ion-row>
+        </ion-grid>
+
+    </ion-slide>
+
+</ion-slides>
+

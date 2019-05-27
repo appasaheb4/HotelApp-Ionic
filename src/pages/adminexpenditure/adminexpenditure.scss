@@ -1,0 +1,63 @@
+page-adminexpenditure {
+
+      .fullBody{
+    background-image: url("http://menuapphybrid.newapptec.com/Content/Project/Hotel/All/background.png");
+}
+.bgTrnasp{
+    background-color: transparent;
+}
+
+.itemLeft{
+    float: left;
+}
+   
+
+  .panel{
+        width: 95%;
+       display: block;
+       
+    margin-left: auto;
+     margin-right: auto;
+    }
+    .panel-heading{
+        background-color: #FFC107;
+    }
+   
+
+    $num-of-tabs: 2;
+
+    @mixin tabs {
+        @for $i from 1 through $num-of-tabs {
+            &:nth-of-type(#{$i}) {
+                &.segment-activated {
+                    ~ .slide {
+                        left: calc((100% / #{$num-of-tabs}) * #{$i - 1});
+                    }
+                }
+            }
+        }
+    }
+
+    .segment-button {
+        border: 0 !important;
+        @include tabs;
+    }
+
+    .slide {
+        background: dodgerblue;
+        width: calc(100% / #{$num-of-tabs});
+        height: 4px;
+        position: absolute;
+        left: 0;    
+        top: calc(100% - 4px);
+        transition: left 0.3s ease-out;
+    }
+
+    .swiper-slide {
+        overflow-y: scroll;
+        display: block;
+    }
+    ion-slide{
+        padding-top: 120px;  
+    }
+}

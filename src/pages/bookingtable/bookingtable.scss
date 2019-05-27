@@ -1,0 +1,31 @@
+page-bookingtable {
+
+    .fullBody{
+        background-image: url("http://menuapphybrid.newapptec.com/Content/Project/Hotel/All/background.png");
+    }
+      .bookingImage{
+        width: 100%;
+        height: 120px;
+        opacity: 0.4;
+        filter: alpha(opacity=60); /* For IE8 and earlier */
+    }
+    .tableNobook{
+        float: left;
+        background: none repeat scroll 0 0 #0063ff;
+         border: 2px solid #ffffff;
+            border-radius: 50%;
+            color: #fff;
+             font-size: 20px;
+            padding: 2px 10px;  
+            margin-top: 5px;
+            opacity: 0.4;
+        filter: alpha(opacity=60);
+    }
+     .ionColCss{
+        border-color: gray;
+        border-radius: 5px;
+        margin-bottom: 10px;
+        height: 170px;
+        box-shadow: rgba(0,0,0,0.8) 0 0 1px;
+    }
+}

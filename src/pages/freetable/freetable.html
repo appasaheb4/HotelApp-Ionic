@@ -1,0 +1,22 @@
+<ion-header>
+
+    <ion-navbar>
+        <ion-title>Free Table</ion-title>
+    </ion-navbar>
+
+</ion-header>
+
+
+<ion-content class="fullBody">
+    <ion-grid padding class="tableGrid">
+        <ion-row >
+            <ion-col col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6 *ngFor="let item of tableData;" class="ionColCss">
+                     <div *ngIf="item.status !='Booking'" (click)="addtableBooking(item.id,item.tableNo,item.tableCode);">
+                    <img src="http://hotelsameer.web44.net/Content/AppImages/WaiterHome/tableBooking.jpg" class="prodImage" alt="productImage"/>  
+                    <span class="tableNo">{{item.tableNo}}</span> <span class="freeTable">Free Table</span>
+                </div>    
+            </ion-col>    
+
+        </ion-row>  
+    </ion-grid>
+</ion-content>

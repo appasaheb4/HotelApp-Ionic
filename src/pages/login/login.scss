@@ -1,0 +1,23 @@
+page-login {
+    
+    
+    .loginPage {
+   background-image: url("../assets/imgs/hotelBackgound.jpg");  
+   background-repeat: no-repeat;
+     background-size: 100% 100%;
+}   
+.loginIcon{
+        height: 100px;   
+        width: 100px;
+        display: block;
+         margin: 0 auto;
+    } 
+    .loginDiv .contentListItem{
+           opacity: 0.6;
+           background-color: black;
+           color: white;
+           
+           filter: alpha(opacity=60);
+    }
+ 
+}

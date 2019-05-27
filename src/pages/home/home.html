@@ -1,0 +1,50 @@
+<ion-header>
+    <ion-navbar color="appcolor">
+        <button ion-button menuToggle>
+            <ion-icon name="menu"></ion-icon>
+        </button>
+        <ion-title>Home</ion-title>
+    </ion-navbar>    
+    <ion-navbar color="homelabelcolor" class="marginTopLine">
+        <ion-title class="text-center">Admin</ion-title>
+    </ion-navbar>  
+</ion-header>   
+  
+<ion-content class="fullBody">  
+ 
+    <ion-grid>
+        <ion-row>     
+            <ion-col col-4 col-sm-4 col-md-4 col-lg-4 col-xl-4 (click)="openPage(billing);">  
+                 <button ion-button icon-only block  clear >
+                    <img src="http://hotelsameer.web44.net/Content/AppImages/HomePage/Billing.png" alt="billing"/>
+                </button> 
+                <h6 class="text-center titleName">Billing</h6>
+            </ion-col>
+           <ion-col col-4 col-sm-4 col-md-4 col-lg-4 col-xl-4 (click)="openPage(adminPurch);">
+                  <button ion-button icon-only block  clear>
+                    <img src="http://hotelsameer.web44.net/Content/AppImages/HomePage/Expenditure.png" alt="purchase"/>
+                </button> 
+                <h6 class="text-center titleName">Purchase</h6>  
+            </ion-col>
+            <ion-col col-4 col-sm-4 col-md-4 col-lg-4 col-xl-4 (click)="openPage(adminexpenture);">
+                  <button ion-button icon-only block  clear>
+                    <img src="http://hotelsameer.web44.net/Content/AppImages/HomePage/Purchase.png" alt="exp"/>
+                </button> 
+                <h6 class="text-center titleName">Expenditure</h6>  
+            </ion-col>
+            <ion-col col-4 col-sm-4 col-md-4 col-lg-4 col-xl-4 (click)="openPage(notice);">
+                   <button ion-button icon-only block  clear>
+                    <img src="http://hotelsameer.web44.net/Content/AppImages/HomePage/stock.png" alt="stock"/>
+                </button> 
+                <h6 class="text-center titleName">Wine Botteles stock</h6> 
+            </ion-col>
+       
+             <ion-col col-4 col-sm-4 col-md-4 col-lg-4 col-xl-4 (click)="openPage(addvendor);">
+                   <button ion-button icon-only block  clear>
+                    <img src="http://hotelsameer.web44.net/Content/AppImages/HomePage/addVendor.png" alt="stock"/>
+                </button> 
+                <h6 class="text-center titleName">Add Vendor</h6> 
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+</ion-content>
